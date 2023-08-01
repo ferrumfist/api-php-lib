@@ -46,13 +46,12 @@ class SecretKeyTest extends AbstractTestCase
 
     public function testGet()
     {
-        self::markTestSkipped('rename admin login');
         $keyId = static::$client->secretKey()->create('192.168.0.1');
         $keyInfo = static::$client->secretKey()->get($keyId);
 
         $this->assertNotEmpty($keyInfo->key);
         $this->assertEquals('192.168.0.1', $keyInfo->ipAddress);
-        $this->assertEquals('admin', $keyInfo->login);
+        $this->assertEquals(static::$client->getLogin(), $keyInfo->login);
 
         static::$client->secretKey()->delete($keyId);
     }

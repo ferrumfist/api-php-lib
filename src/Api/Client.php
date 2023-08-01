@@ -128,6 +128,14 @@ class Client
     }
 
     /**
+     * @return string
+     */
+    public function getLogin(): string
+    {
+        return $this->login;
+    }
+
+    /**
      * Retrieve XML template for packet.
      *
      * @param string|null $version
